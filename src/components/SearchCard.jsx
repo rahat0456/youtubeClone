@@ -9,47 +9,45 @@ function SearchCard({ video }) {
   return (
     <div>
       <Link to={`/video/${video?.videoId}`}>
-        <div className="flex flex-col md:flex-row  mb-8 md:mb-3  md:p-4">
+        <div className="flex flex-col md:flex-row  mb-8 md:mb-1  md:p-1">
           <div className="relative flex h-48  w-full md:w-80   ">
             <img
-              className="h-full w-full rounded-lg object-cover"
+              className="h-full w-full rounded-lg "
               src={video?.thumbnails[0]?.url}
             />
             {video?.lengthSeconds && <Time time={video?.lengthSeconds} />}
           </div>
-          <div className="flex flex-col ml-4 md:ml-6 mt-4 md:mt-0 overflow-hidden">
-            <span className="text-lg md:text-2xl font-semibold line-clamp-2 ">
+          <div className="flex flex-col ml-2 md:ml-2 mt-2 md:mt-0 overflow-hidden">
+            <span className="text-lg md:text-xl font-semibold line-clamp-2 ">
               {video?.title}
             </span>
-            <span className="empty:hidden text-sm line-clamp-1 md:line-clamp-2md:pr-24 md:my-4">
-              {video?.descriptionSnippet}
-            </span>
-            <div className="hidden md:flex items-center">
-              <div className="flex items-start mr-3">
-                <div className="flex h-9 w-9 rounded-full overflow-hidden">
-                  <img
-                    className="h-full w-full object-cover"
-                    src={video?.author?.avatar[0]?.url}
-                  />
-                </div>
-              </div>
+            <div className="flex font-[#606060] text-sm  truncate overflow-hidden">
+              <span>{`${abbreviateNumber(video?.stats?.views, 0)} views`}</span>
+              <span className="flex text-[24px] leading-none font-bold  relative top-[-8px] mx-1">
+                .
+              </span>
+              <span className="truncate">{video?.publishedTimeText}</span>
+            </div>
+            <div className=" md:flex items-center">
               <div className="flex flex-col">
-                <span className="text-sm font-semibold mt-2  flex items-center">
-                  {video?.author?.title}
-                  {video?.author?.badges[0]?.type === "VERIFIED_CHANNEL" && (
-                    <BsFillCheckCircleFill className=" text-[12px] lg:text-[10px] xl:text-[12px] ml-1" />
-                  )}
-                </span>
-                <div className="flex text-sm font-semibold  truncate overflow-hidden">
-                  <span>{`${abbreviateNumber(
-                    video?.stats?.views,
-                    0
-                  )} views`}</span>
-                  <span className="flex text-[24px] leading-none font-bold  relative top-[-10px] mx-1">
-                    .
+                <div className="flex items-start mr-1 my-1">
+                  <div className="flex flex-row h-6 w-6 mt-3 rounded-full overflow-hidden items-center">
+                    <img
+                      className="h-full w-full object-cover"
+                      src={video?.author?.avatar[0]?.url}
+                    />
+                  </div>
+                  <span className="text-sm from-neutral-400 mt-3 ml-2  flex items-center">
+                    {video?.author?.title}
+                    {video?.author?.badges[0]?.type === "VERIFIED_CHANNEL" && (
+                      <BsFillCheckCircleFill className=" text-[12px] lg:text-[10px] xl:text-[12px] ml-2 mt-1 from-neutral-400" />
+                    )}
                   </span>
-                  <span className="truncate">{video?.publishedTimeText}</span>
                 </div>
+
+                <span className="empty:hidden text-sm line-clamp-3 md:line-clamp-2md:pr-24 md:my-2">
+                  {video?.descriptionSnippet}
+                </span>
               </div>
             </div>
           </div>
