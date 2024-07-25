@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Avatar from "react-avatar";
-import Sidebar from "./Sidebar";
+import { useAuth } from "../context/Auth";
 import { AiOutlineMenu } from "react-icons/ai";
 import { CiSearch } from "react-icons/ci";
 import { IoMdMic } from "react-icons/io";
@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 
 function Navbar() {
   const [searchy, setSearchy] = useState();
+  const { sideOpn, setSideOpn } = useAuth();
   const navigate = useNavigate();
 
   const navigator = (event) => {
@@ -27,7 +28,12 @@ function Navbar() {
   return (
     <div className="flex justify-between fixed top-0 w-[100%] bg-white px-6 py-2 ">
       <div className="flex items-center space-x-4  ">
-        <AiOutlineMenu className="text-xl cursor-pointer" onClick />
+        <AiOutlineMenu
+          className="text-xl cursor-pointer"
+          onClick={() => {
+            setSideOpn(!sideOpn);
+          }}
+        />
         <img src={logo} alt="" className="w-28 cursor-pointer" />
       </div>
       <div className="flex w-[35%] items-center ">

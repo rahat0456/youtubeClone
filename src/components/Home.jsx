@@ -3,12 +3,13 @@ import Sidebar from "./Sidebar";
 import Video from "./Video";
 import { useAuth } from "../context/Auth.jsx";
 import ListItems from "./ListItems.jsx";
+
 function Home() {
-  const { data, load } = useAuth();
-  console.log(data);
+  const { data, load, sideOpn } = useAuth();
+
   return (
     <div className="flex mt-20">
-      <Sidebar />
+      {sideOpn && <Sidebar />}
       <div className="h-[calc(100vh-6.625rem)] overflow-y-scroll overflow-x-hidden">
         <ListItems />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-5">

@@ -5,11 +5,10 @@ import Time from "./loader/Time";
 import { Link } from "react-router-dom";
 
 function SearchCard({ video }) {
-  console.log(video);
   return (
     <div>
       <Link to={`/video/${video?.videoId}`}>
-        <div className="flex flex-col md:flex-row  mb-8 md:mb-1  md:p-1">
+        <div className="flex flex-col md:flex-row  mb-1 md:mb-1  md:p-1">
           <div className="relative flex h-48  w-full md:w-80   ">
             <img
               className="h-full w-full rounded-lg "
@@ -17,7 +16,7 @@ function SearchCard({ video }) {
             />
             {video?.lengthSeconds && <Time time={video?.lengthSeconds} />}
           </div>
-          <div className="flex flex-col ml-2 md:ml-2 mt-2 md:mt-0 overflow-hidden">
+          <div className="flex flex-col  mt-2 md:mt-0 overflow-hidden ml-3">
             <span className="text-lg md:text-xl font-semibold line-clamp-2 ">
               {video?.title}
             </span>

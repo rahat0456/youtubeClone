@@ -3,10 +3,12 @@ import { useParams } from "react-router-dom";
 import { fetchData } from "../backend/rapidAPI.js";
 import Sidebar from "./Sidebar.jsx";
 import SearchCard from "./SearchCard.jsx";
+import { useAuth } from "../context/Auth.jsx";
 
 function Search() {
   const [result, setResult] = useState();
   const { searchQuery } = useParams();
+  const { sideOpn } = useAuth();
 
   useEffect(() => {
     fetchSearchResults();
@@ -20,10 +22,11 @@ function Search() {
 
   return (
     <div className="">
-      <div className="mt-24 flex flex-row h-[100%]">
-        <Sidebar />
-        <div className="grow h-[100%] overflow-y-scroll overflow-x-hidden">
-          <div className=" grid grid-cols-1 gap-2 p-2">
+      <div className="mt-24 flex flex-row  h-[100%]  ">
+        {sideOpn == false && <Sidebar />}
+
+        <div className="grow h-[100%] ">
+          <div className=" grid grid-cols-1 gap-2 p-2 h-[calc(100vh-6.625rem)] overflow-y-scroll overflow-x-hidden">
             {result?.map((item, index) => {
               if (item?.type !== "video") return false;
               return <SearchCard key={index} video={item?.video} />;

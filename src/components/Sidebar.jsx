@@ -26,6 +26,7 @@ import { BiVideo } from "react-icons/bi";
 import { IoFlagOutline } from "react-icons/io5";
 import { IoHelpCircleOutline } from "react-icons/io5";
 import { RiFeedbackLine } from "react-icons/ri";
+import { redirect } from "react-router-dom";
 
 const Sidebar = () => {
   const sidebarItems = [
@@ -33,6 +34,7 @@ const Sidebar = () => {
       id: 1,
       name: "Home",
       icon: <GoHome />,
+      link: "/",
     },
     {
       id: 2,

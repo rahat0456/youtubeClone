@@ -6,10 +6,13 @@ import { AiOutlineLike } from "react-icons/ai";
 import { abbreviateNumber } from "js-abbreviation-number";
 import SuggestedVideo from "./SuggestedVideo";
 import { BsFillCheckCircleFill } from "react-icons/bs";
+import Sidebar from "./Sidebar";
+import { useAuth } from "../context/Auth";
 
 function PlayingVideo() {
   const [video, setVideo] = useState();
   const [realatedVideo, setRelativeVideo] = useState();
+  const { sideOpn } = useAuth();
   const { id } = useParams();
 
   useEffect(() => {
@@ -33,6 +36,7 @@ function PlayingVideo() {
   return (
     <div className=" flex justify-center flex-row h-[calc(100%-56px)] mt-16">
       <div className="w-full max-w-[1580px] flex flex-col lg:flex-row">
+        {sideOpn && <Sidebar />}
         <div className="flex flex-col lg:w-[calc(100%-350px)] xl:w-[100%-400px] px-4 py-3 lg:py-6">
           <div className="h-[200px] md:h-[700px] ml-[-16px] mr-[-16px] lg:ml-0 lg:mr-0">
             <ReactPlayer

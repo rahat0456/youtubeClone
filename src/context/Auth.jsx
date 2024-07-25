@@ -7,6 +7,7 @@ export default function Authpro({ children }) {
   const [load, setLoad] = useState(false);
   const [data, setData] = useState([]);
   const [value, setValue] = useState("New");
+  const [sideOpn, setSideOpn] = useState(false);
 
   useEffect(() => {
     fetchYT(value);
@@ -21,7 +22,7 @@ export default function Authpro({ children }) {
   };
 
   return (
-    <Auth.Provider value={{ data, value, load, setValue }}>
+    <Auth.Provider value={{ data, value, load, setValue, setSideOpn, sideOpn }}>
       {children}
     </Auth.Provider>
   );
